@@ -1,0 +1,36 @@
+# Output
+/.svelte-kit
+/build
+/dist
+.wrangler
+*.tgz
+
+# Env
+.env
+.env.*
+
+# Vite
+.vite/
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Node
+node_modules/
+.npmrc
+
+# Cache
+*.tsbuildinfo
+.npm
+.eslintcache
+.stylelintcache
+
+# VSCode
+.devcontainer/
+.vscode/
+.vscode-test
+
