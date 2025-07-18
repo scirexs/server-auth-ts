@@ -1,0 +1,27 @@
+{
+  "name": "server-auth-ts",
+  "version": "0.1.0",
+  "description": "TypeScript Sample API Server for Cloudflare Workers",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build": "wrangler deploy --dry-run",
+    "tail": "wrangler tail",
+    "test": "vitest run",
+    "test:coverage": "vitest --coverage"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.14",
+    "miniflare": "^4.20250712.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
+    "wrangler": "^4.24.3"
+  },
+  "author": "scirexs",
+  "license": "MIT",
+  "dependencies": {
+    "@scirexs/srp6a": "^0.1.5",
+    "resend": "^4.6.0"
+  }
+}
