@@ -10,6 +10,7 @@ import {
   sendVerifyCode,
   resendVerifyCode,
   verifyCode,
+  checkMailAddressFormat,
   responseDummyHello,
   prepareLogin,
   loadPrepare,
@@ -65,6 +66,7 @@ async function handleSignup(request: Request, env: Env): Promise<Response> {
   const { username, salt, verifier, turnstile } = await extractBody(request, "username", "salt", "verifier", "turnstile");
   await verifyTurnstile(request.headers, turnstile, env.TURNSTILE_SECRET_KEY);
 
+  checkMailAddressFormat(username);
   const d1 = new D1Runner(env);
   if (await d1.existsActiveUsername(username)) return await responseDummySignup(); // dummy response
   const userid = await d1.upsertPendingUser(username, salt, verifier);

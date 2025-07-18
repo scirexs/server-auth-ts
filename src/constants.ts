@@ -1,4 +1,5 @@
 export {
+  REGEX_MAIL,
   PREFIX,
   MAX_RATE_LIMIT,
   MAX_VERIFY_LIMIT,
@@ -15,6 +16,7 @@ export {
 
 import type { ResponseHeaders } from "./types.js";
 
+const REGEX_MAIL = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
 const PREFIX = "DO:";
 const MAX_RATE_LIMIT = 20;
 const MAX_VERIFY_LIMIT = 5;

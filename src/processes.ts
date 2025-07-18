@@ -3,6 +3,7 @@ export {
   validateHeaders,
   verifyTurnstile,
   createJSONResponse,
+  checkMailAddressFormat,
   responseDummySignup,
   sendVerifyCode,
   resendVerifyCode,
@@ -16,7 +17,7 @@ export {
   verifySession,
 };
 import { addRandomDelay, authenticate, createDummyHello, createServerHello, getDefaultConfig } from "@scirexs/srp6a/server";
-import { MAX_RATE_LIMIT, MAX_VERIFY_LIMIT, TURNSTILE_URL } from "./constants.js";
+import { REGEX_MAIL, MAX_RATE_LIMIT, MAX_VERIFY_LIMIT, TURNSTILE_URL } from "./constants.js";
 import {
   HandledError,
   validateHeader,
@@ -73,6 +74,9 @@ function createJSONResponse(body: any, status: number = 200, headers?: ResponseH
 }
 
 /** for signup */
+function checkMailAddressFormat(username: string) {
+  if (!REGEX_MAIL.test(username)) throw new HandledError(400, "Invalid mail address format");
+}
 async function responseDummySignup(): Promise<Response> {
   await addRandomDelay(10);
   return createJSONResponse({ success: true, userid: genUUID() }, 201);
