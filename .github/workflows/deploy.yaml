@@ -31,5 +31,8 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           secrets: |
-            TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
-            RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+            TURNSTILE_SECRET_KEY
+            RESEND_API_KEY
+        env:
+          TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
+          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
