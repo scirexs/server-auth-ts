@@ -419,7 +419,8 @@ describe("genVerifyCode", () => {
 describe("genUUID", () => {
   it("should generate UUID", () => {
     const result = genUUID();
-    expect(result).toBe("test-uuid-1234");
+    expect(result.length).toBe(36);
+    expect([...result.matchAll(/\-/g)].length).toBe(4);
   });
 });
 
