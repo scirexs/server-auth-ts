@@ -34,5 +34,5 @@ jobs:
             TURNSTILE_SECRET_KEY
             RESEND_API_KEY
         env:
-          TURNSTILE_SECRET_KEY=${{ secrets.TURNSTILE_SECRET_KEY }}
-          RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}
+          TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
