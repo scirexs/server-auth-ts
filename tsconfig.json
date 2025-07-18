@@ -3,7 +3,7 @@
     "target": "es2022",
     "module": "es2022",
     "lib": ["ESNext"],
-    "types": ["./worker-configuration.d.ts", "@types/node"],
+    "types": ["./worker-configuration.d.ts", "node"],
     "allowJs": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
