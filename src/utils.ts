@@ -20,6 +20,7 @@ export {
   getDORateLimit,
 }
 
+import { webcrypto } from "crypto";
 import { Resend, type CreateEmailOptions } from "resend";
 import { ORIGINS, COOKIE_DOMAIN, CORS_HEADERS, SECURITY_HEADERS } from "./constants.js";
 import type { DOSignupVerify, DOUserSession, DORateLimit, DOLoginRequest } from "./cfobj.js";
@@ -113,7 +114,7 @@ function getIPSubnet(ip: string): string {
 }
 async function computeHash(str: string): Promise<string> {
   const buf = new TextEncoder().encode(str);
-  const hash = new Uint8Array(await globalThis.crypto.subtle.digest("SHA-256", buf));
+  const hash = new Uint8Array(await webcrypto.subtle.digest("SHA-256", buf));
   return Array.from(hash)
     .map((x) => x.toString(16).padStart(2, "0"))
     .join("");
@@ -150,7 +151,7 @@ function genVerifyCode(len: number): string {
   return result;
 }
 function genUUID(): string {
-  return globalThis.crypto.randomUUID();
+  return webcrypto.randomUUID();
 }
 function getDOSignup(env: Env): DurableObjectStub<DOSignupVerify> {
   return env.SIGNUP_VERIFY.get(env.SIGNUP_VERIFY.idFromName("signup"));

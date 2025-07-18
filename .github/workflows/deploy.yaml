@@ -19,8 +19,8 @@ jobs:
           node-version: "lts/*"
           registry-url: "https://registry.npmjs.org"
 
-      - name: Build package
-        run: deno task build
+      - name: Build
+        run: npm run build
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
