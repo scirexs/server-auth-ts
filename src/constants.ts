@@ -45,7 +45,7 @@ const SECURITY_HEADERS: ResponseHeaders = {
   "X-Content-Type-Options": "nosniff", // XSS
   "X-Frame-Options": "DENY", // click jacking
   "Referrer-Policy": "strict-origin-when-cross-origin", // privacy
-  "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'", // XSS
+  "Content-Security-Policy": "default-src 'none'; base-uri 'none'; frame-ancestors 'none'; script-src https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com", // XSS
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains; preload" // HSTS
 };
 const ENDPOINT = {
