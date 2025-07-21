@@ -36,7 +36,7 @@ const TTL = {
 } as const;
 const CORS_HEADERS: ResponseHeaders = {
   "Access-Control-Allow-Origin": "https://sandbox.scirexs.dev",
-  "Access-Control-Allow-Methods": "POST",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type",
   "Access-Control-Allow-Credentials": "true", // for set-cookie
   "Access-Control-Max-Age": "86400"

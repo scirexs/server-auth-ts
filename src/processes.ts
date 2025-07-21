@@ -2,6 +2,7 @@ export {
   isRateLimited,
   validateHeaders,
   verifyTurnstile,
+  createPreflightResponse,
   createJSONResponse,
   checkMailAddressFormat,
   responseDummySignup,
@@ -17,7 +18,7 @@ export {
   verifySession,
 };
 import { addRandomDelay, authenticate, createDummyHello, createServerHello, getDefaultConfig } from "@scirexs/srp6a/server";
-import { REGEX_MAIL, MAX_RATE_LIMIT, MAX_VERIFY_LIMIT, TURNSTILE_URL } from "./constants.js";
+import { REGEX_MAIL, MAX_RATE_LIMIT, MAX_VERIFY_LIMIT, TURNSTILE_URL, CORS_HEADERS } from "./constants.js";
 import {
   HandledError,
   validateHeader,
@@ -59,6 +60,12 @@ async function verifyTurnstile(headers: Headers, token: string, secret: string) 
   });
   const result = await response.json() as TurnstileResponse;
   if (!result.success) throw new HandledError(403, "Failed to bot check");
+}
+function createPreflightResponse(): Response {
+  return new Response(null, {
+    status: 200,
+    headers: CORS_HEADERS,
+  });
 }
 function createJSONResponse(body: any, status: number = 200, headers?: ResponseHeaders): Response {
   const json = JSON.stringify(body);

@@ -5,6 +5,7 @@ import {
   isRateLimited,
   validateHeaders,
   verifyTurnstile,
+  createPreflightResponse,
   createJSONResponse,
   responseDummySignup,
   sendVerifyCode,
@@ -34,6 +35,7 @@ async function handleRequest(request: Request, env: Env): Promise<Response> {
   const method = request.method;
   const pathname = url.pathname;
 
+  if (method === "OPTIONS") return createPreflightResponse();
   if (method !== "POST") throw new HandledError(405, `${method} method is not allowed`);
   if (await isRateLimited(request.headers, env)) throw new HandledError(429, "Too many requests. Please try again later.");
 
