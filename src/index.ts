@@ -151,8 +151,7 @@ async function handleError(e: any): Promise<Response> {
   if (!handled) console.error("Unhandled error or send mail error:", e);
 
   const response = handled
-    ? e
-    // ? new HandledError(400, "Bad request")
+    ? new HandledError(400, "Bad request")
     : new HandledError(500, "Internal server error occurred");
   return createJSONResponse({ success: false, message: response.message }, response.status);
 }
